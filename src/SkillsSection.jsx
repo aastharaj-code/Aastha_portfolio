@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const SkillWord = ({ children, progress, range }) => {
+const SkillWord = ({ children, progress, range, isMobile }) => {
   const opacity = useTransform(progress, range, [0.4, 1]);
   return (
     <motion.span 
       style={{ 
-        opacity, 
+        opacity: isMobile ? 1 : opacity, 
         display: 'inline-block', 
         marginRight: '2.5rem', 
         marginBottom: '1rem',
@@ -32,6 +32,14 @@ const techLogos = [
 
 const SkillsSection = () => {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -55,11 +63,11 @@ const SkillsSection = () => {
           <h2 className="skills-heading">My Arsenal.</h2>
 
           <div className="skills-mask-wrapper">
-            <motion.div className="skills-text-container" style={{ y }}>
+            <motion.div className="skills-text-container" style={{ y: isMobile ? 0 : y }}>
               {skills.map((skill, i) => {
                 const step = 1 / skills.length;
                 return (
-                  <SkillWord key={i} progress={scrollYProgress} range={[i * step, (i + 1) * step]}>
+                  <SkillWord key={i} progress={scrollYProgress} range={[i * step, (i + 1) * step]} isMobile={isMobile}>
                     {skill}
                   </SkillWord>
                 );

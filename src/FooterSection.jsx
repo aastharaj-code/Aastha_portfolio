@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 const FooterSection = () => {
   const containerRef = useRef(null);
   const [bounds, setBounds] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   // Draggable text position
   const x = useMotionValue(0);
@@ -23,6 +24,7 @@ const FooterSection = () => {
         const rect = containerRef.current.getBoundingClientRect();
         setBounds({ width: rect.width, height: rect.height });
       }
+      setIsMobile(window.innerWidth < 768);
     };
     updateBounds();
     window.addEventListener('resize', updateBounds);
@@ -72,16 +74,16 @@ const FooterSection = () => {
       <div className="footer-drag-arena">
         <motion.div
           className="footer-drag-text"
-          drag
+          drag={!isMobile}
           dragMomentum={true}
           dragElastic={0.12}
           dragConstraints={containerRef}
-          style={{ x, y, cursor: 'grab' }}
+          style={{ x: isMobile ? 0 : x, y: isMobile ? 0 : y, cursor: isMobile ? 'default' : 'grab' }}
           whileDrag={{ cursor: 'grabbing', scale: 0.97 }}
-          whileHover={{ scale: 1.02 }}
-          title="Drag me anywhere!"
+          whileHover={isMobile ? {} : { scale: 1.02 }}
+          title={isMobile ? undefined : "Drag me anywhere!"}
         >
-          <span className="footer-drag-label">drag me</span>
+          {!isMobile && <span className="footer-drag-label">drag me</span>}
           <h2 className="footer-big-text">
             Let's Create<br />
             <em>Something.</em>

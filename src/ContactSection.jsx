@@ -12,7 +12,7 @@ const services = [
 
 const ContactSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, margin: "-20px" });
 
   const [formData, setFormData] = useState({
     name: '',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LoadingScreen from './LoadingScreen';
 import AboutSection from './AboutSection';
@@ -9,8 +9,21 @@ import ContactSection from './ContactSection';
 import FooterSection from './FooterSection';
 
 function App() {
-  const nameLetters = "AASTHA RAJ".split("");
+  const firstNameLetters = "AASTHA".split("");
+  const lastNameLetters = "RAJ".split("");
   const [loaded, setLoaded] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -40,8 +53,72 @@ function App() {
           <a href="#contact">Contact</a>
         </nav>
 
-        <a href="#contact" className="btn btn-primary">Start a project</a>
+        <a href="#contact" className="btn btn-primary start-project-desktop">Start a project</a>
+
+        {/* Hamburger Menu Button */}
+        <button
+          className={`hamburger-btn ${mobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle Menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <div className="hamburger-line line-1"></div>
+          <div className="hamburger-line line-2"></div>
+          <div className="hamburger-line line-3"></div>
+        </button>
       </header>
+
+      {/* Mobile Nav Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className="mobile-nav-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.nav 
+              className="mobile-nav-menu"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            >
+              <div className="mobile-nav-links">
+                {[
+                  { label: "Projects", href: "#projects" },
+                  { label: "Services", href: "#skills" },
+                  { label: "About", href: "#about" },
+                  { label: "Contact", href: "#contact" }
+                ].map((item, i) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + i * 0.08 }}
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+                <motion.a
+                  href="#contact"
+                  className="btn btn-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + 4 * 0.08 }}
+                  style={{ marginTop: '2rem' }}
+                >
+                  Start a project
+                </motion.a>
+              </div>
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
 
 
@@ -56,19 +133,35 @@ function App() {
 
         <div className="hero-content">
           <h2 className="subtitle">UX/UI & WEB DEVELOPMENT</h2>
-          <h1 className="title" style={{ display: 'flex', justifyContent: 'center' }}>
-            {nameLetters.map((char, index) => (
-              <motion.span
-                key={index}
-                drag
-                dragMomentum={false}
-                whileHover={{ scale: 1.1, color: 'var(--accent-teal)', cursor: 'grab' }}
-                whileDrag={{ scale: 1.2, cursor: 'grabbing' }}
-                style={{ display: 'inline-block', whiteSpace: 'pre', zIndex: 50 }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
+          <h1 className="title" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: '1.5rem', rowGap: '0.5rem' }}>
+            <span style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
+              {firstNameLetters.map((char, index) => (
+                <motion.span
+                  key={`first-${index}`}
+                  drag
+                  dragMomentum={false}
+                  whileHover={{ scale: 1.1, color: 'var(--accent-teal)', cursor: 'grab' }}
+                  whileDrag={{ scale: 1.2, cursor: 'grabbing' }}
+                  style={{ display: 'inline-block', zIndex: 50 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
+            <span style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
+              {lastNameLetters.map((char, index) => (
+                <motion.span
+                  key={`last-${index}`}
+                  drag
+                  dragMomentum={false}
+                  whileHover={{ scale: 1.1, color: 'var(--accent-teal)', cursor: 'grab' }}
+                  whileDrag={{ scale: 1.2, cursor: 'grabbing' }}
+                  style={{ display: 'inline-block', zIndex: 50 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           </h1>
           <p className="description">
             I design clear, functional, and memorable experiences. From visual identity to user interface, I help you build a meaningful digital presence.

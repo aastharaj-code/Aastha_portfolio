@@ -2478,3 +2478,338 @@ header {
 
 }
 
+
+/* ===================================================
+   RESPONSIVENESS & MOBILE NAVIGATION ADDITIONS
+   =================================================== */
+
+/* Hamburger Menu Button */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: left center;
+}
+
+/* Transitions to X when open */
+.hamburger-btn.open .line-1 {
+    transform: rotate(45deg) translate(2px, -2px);
+    background-color: var(--text-primary);
+}
+
+.hamburger-btn.open .line-2 {
+    width: 0%;
+    opacity: 0;
+}
+
+.hamburger-btn.open .line-3 {
+    transform: rotate(-45deg) translate(2px, 2px);
+    background-color: var(--text-primary);
+}
+
+/* Show hamburger on mobile/tablet */
+@media (max-width: 1024px) {
+    .hamburger-btn {
+        display: flex;
+    }
+    .start-project-desktop {
+        display: none !important;
+    }
+}
+
+/* Mobile Nav Overlay & Drawer */
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mobile-nav-menu {
+    width: 75%;
+    max-width: 380px;
+    height: 100%;
+    background: #0d0e14;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    width: 100%;
+    text-align: left;
+}
+
+.mobile-nav-links a {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--accent-teal);
+}
+
+/* Skills Section Responsiveness */
+@media (max-width: 1023px) {
+    .skills-section {
+        height: auto !important;
+        padding: 6rem 6% !important;
+    }
+    
+    .skills-sticky {
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+    
+    .skills-left {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        padding-top: 0 !important;
+    }
+    
+    .skills-heading {
+        font-size: clamp(3rem, 7vw, 4.5rem) !important;
+        margin-bottom: 2rem !important;
+        text-align: center !important;
+        width: 100%;
+    }
+    
+    .skills-mask-wrapper {
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+        padding-top: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    .skills-text-container {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.8rem !important;
+        padding-bottom: 0 !important;
+        transform: none !important;
+        font-size: 1.3rem !important;
+    }
+    
+    .skills-text-container span {
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        font-size: clamp(1.1rem, 3.2vw, 1.8rem) !important;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.09) !important;
+        padding: 0.7rem 1.4rem !important;
+        border-radius: 50px !important;
+        font-family: var(--font-main) !important;
+        font-weight: 500 !important;
+        letter-spacing: 1px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .skills-logos-panel {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    .floating-logos-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    
+    .floating-logo-card {
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 18px !important;
+    }
+    
+    .floating-logo-img {
+        width: 42px !important;
+        height: 42px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-logos-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    .floating-logo-card {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    
+    .floating-logo-img {
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
+
+/* About Section Card Adjustments */
+@media (max-width: 480px) {
+    .premium-about-card {
+        padding: 2.2rem 1.8rem !important;
+        height: auto !important;
+        min-height: 320px !important;
+    }
+    
+    .slider-card-viewport {
+        height: 320px !important;
+    }
+    
+    .fc-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .card-title-box {
+        margin: 1rem 0 !important;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+        gap: 1.5rem !important;
+        margin: 2rem 0 !important;
+    }
+    
+    .stat-number {
+        font-size: 2rem !important;
+    }
+}
+
+/* Ensure actions overlay on project cards is always visible on touch devices */
+@media (max-width: 1023px) {
+    .project-card-actions {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+    .project-card:hover .project-card-image-wrapper img {
+        transform: scale(1.04) !important;
+    }
+}
+
+/* Cinematic Loading Screen Letter Size Adjustments */
+@media (max-width: 768px) {
+    .loader-letter {
+        font-size: clamp(3rem, 12vw, 6rem) !important;
+    }
+    .loader-counter-num {
+        font-size: 2.8rem !important;
+    }
+    .loader-tagline {
+        left: 2rem !important;
+        bottom: 2rem !important;
+        font-size: 0.8rem !important;
+    }
+    .loader-counter {
+        right: 2rem !important;
+        bottom: 2rem !important;
+    }
+}
+
+/* ===================================================
+   ADDITIONAL RESPONSIVENESS PATCHES
+   =================================================== */
+
+/* Service Chips Wrapping Fix */
+.service-chips {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 0.6rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.service-chip {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+/* Footer Bottom Overlap Protection */
+@media (max-width: 768px) {
+    .site-footer {
+        padding-bottom: 2.5rem !important;
+    }
+    .footer-drag-arena {
+        min-height: 250px !important;
+        padding: 2rem 5% 1rem 5% !important;
+    }
+    .footer-big-text {
+        font-size: clamp(2rem, 9vw, 3.5rem) !important;
+        line-height: 1.15 !important;
+    }
+    .footer-bottom-bar {
+        margin-top: 1.5rem !important;
+        border-top: 1px solid rgba(255,255,255,0.06) !important;
+        padding-top: 1.5rem !important;
+    }
+}
+
+/* ===================================================
+   CONTACT GRID WIDTH & OVERFLOW CONSTRAINT PATCHES
+   =================================================== */
+
+.contact-grid {
+    min-width: 0 !important;
+}
+
+.contact-form-wrapper {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.contact-form {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 100% !important;
+    }
+}
