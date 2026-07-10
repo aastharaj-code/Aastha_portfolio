@@ -43,7 +43,7 @@ const FooterSection = () => {
 
   const socialLinks = [
     { label: 'Mail', href: 'mailto:aastha@example.com' },
-    { label: 'LinkedIn', href: 'https://linkedin.com' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aastha-raj-9b25083a6' },
     { label: 'Instagram', href: 'https://instagram.com' },
     { label: 'GitHub', href: 'https://github.com' },
   ];

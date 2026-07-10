@@ -119,7 +119,7 @@ function App() {
         {/* Social Sidebar Left */}
         <aside className="social-sidebar">
           <a href="#" className="social-icon" aria-label="Instagram"><i className="fa-brands fa-instagram"></i></a>
-          <a href="#" className="social-icon" aria-label="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.linkedin.com/in/aastha-raj-9b25083a6" target="_blank" rel="noreferrer" className="social-icon" aria-label="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
           <a href="#" className="social-icon" aria-label="GitHub"><i className="fa-brands fa-github"></i></a>
         </aside>
 
