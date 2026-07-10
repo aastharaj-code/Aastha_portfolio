@@ -68,7 +68,7 @@ function App() {
         </button>
       </header>
 
-      {/* Mobile Nav Overlay */}
+       {/* Mobile Nav Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -77,6 +77,7 @@ function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            onClick={() => setMobileMenuOpen(false)}
           >
             <motion.nav 
               className="mobile-nav-menu"
@@ -84,13 +85,15 @@ function App() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="mobile-nav-links">
                 {[
                   { label: "Projects", href: "#projects" },
                   { label: "Services", href: "#skills" },
                   { label: "About", href: "#about" },
-                  { label: "Contact", href: "#contact" }
+                  { label: "Contact", href: "#contact" },
+                  { label: "Start a project", href: "#contact" }
                 ].map((item, i) => (
                   <motion.a
                     key={item.label}
@@ -103,17 +106,6 @@ function App() {
                     {item.label}
                   </motion.a>
                 ))}
-                <motion.a
-                  href="#contact"
-                  className="btn btn-primary"
-                  onClick={() => setMobileMenuOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + 4 * 0.08 }}
-                  style={{ marginTop: '2rem' }}
-                >
-                  Start a project
-                </motion.a>
               </div>
             </motion.nav>
           </motion.div>

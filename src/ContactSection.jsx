@@ -95,7 +95,7 @@ const ContactSection = () => {
 
             {/* Contact details */}
             <motion.div variants={itemVariants} className="contact-details">
-              <a href="mailto:aastha@example.com" className="contact-detail-item">
+              <a href="mailto:aastharaj077@gmail.com" className="contact-detail-item">
                 <div className="detail-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <rect x="2" y="4" width="20" height="16" rx="3"/>
@@ -104,7 +104,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="detail-label">Email</div>
-                  <div className="detail-value">aastha@example.com</div>
+                  <div className="detail-value">aastharaj077@gmail.com</div>
                 </div>
               </a>
 
