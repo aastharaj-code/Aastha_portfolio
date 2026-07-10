@@ -42,10 +42,10 @@ const FooterSection = () => {
   const year = new Date().getFullYear();
 
   const socialLinks = [
-    { label: 'Mail', href: 'mailto:aastha@example.com' },
+    { label: 'Mail', href: 'mailto:aastharaj077@gmail.com' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aastha-raj-9b25083a6' },
     { label: 'Instagram', href: 'https://instagram.com' },
-    { label: 'GitHub', href: 'https://github.com' },
+    { label: 'GitHub', href: 'https://github.com/aastharaj-code' },
   ];
 
   return (
