@@ -105,7 +105,7 @@ const AboutSection = () => {
           </h2>
 
           <p className="creative-paragraph">
-            I'm a multidisciplinary Fullstack Developer and UI/UX Designer with over 4 years of experience creating robust, scalable, and visually stunning digital experiences. My work is grounded in clean architecture, pixel-perfect design, and a deep understanding of user psychology.
+            I'm a multidisciplinary Fullstack Developer and UI/UX Designer with over 1 years of experience creating robust, scalable, and visually stunning digital experiences. My work is grounded in clean architecture, pixel-perfect design, and a deep understanding of user psychology.
           </p>
           
           <p className="creative-paragraph" style={{ fontStyle: 'italic', color: 'var(--text-primary)', fontWeight: 400 }}>
@@ -114,11 +114,11 @@ const AboutSection = () => {
 
           <div className="stats-container">
             <div className="stat-item">
-              <span className="stat-number">4+</span>
+              <span className="stat-number">1+</span>
               <span className="stat-label">years of experience</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">40+</span>
+              <span className="stat-number">15+</span>
               <span className="stat-label">successful projects</span>
             </div>
           </div>
